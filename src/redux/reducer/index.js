@@ -1,9 +1,11 @@
 import { combineReducers } from 'redux';
 import {Loginreducer} from './Loginreducer';
+import {Signupreducer} from './Signupreducer'
 
 const makeRootReducer =asyncReduces=>{
   const appReducer=combineReducers({
-    Loginreducer
+    Loginreducer ,
+    Signupreducer
   })
   return appReducer
 }
