@@ -3,6 +3,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 import '../style/Login.scss';
 
 export default class Signup extends Component {
+    componentDidUpdate(){
+        console.log(this.props,'77777777777777');
+        if(this.props.success.error===0)this.props.history.push("/")
+        
+    }
     render() {
         return (
                 <div className = 'main-page'>

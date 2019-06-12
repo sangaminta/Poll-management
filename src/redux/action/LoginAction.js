@@ -20,23 +20,23 @@ export function loginsubmitfailed(payload) {
     return {type: actionType.LOG_SUBMIT_FAILED, payload }
 }
 
-export function signupuser(payload) {
+export function signUpUser(payload) {
     return { type: actionType.SIGN_USERNAME, payload}
 }
 
-export function signuppassword(payload) {
+export function signUpPassword(payload) {
     return { type: actionType.SIGN_PASSWORD, payload }
 }
 
-export function signuprole(payload) {
+export function signUpRole(payload) {
     return { type: actionType.SIGN_ROLE, payload }
 }
 
-export function signupsubmit(payload) {
+export function signUpSubmit(payload) {
     return { type: actionType.SIGN_SUBMIT, payload }
 }
 
-export function signuppasswordsucc(payload) {
+export function signUpPasswordSuccess(payload) {
     return { type: actionType.SIGN_SUBMIT_SUCCESS, payload }
 }
 

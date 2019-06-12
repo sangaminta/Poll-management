@@ -6,6 +6,7 @@ import createStore from './redux/configstore/Configstore';
 import {BrowserRouter as Router} from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Signuppage from './container/Signuppage';
+import UserList from "./container/UserList"
 
 const store=createStore()
 class App extends Component {
@@ -17,6 +18,8 @@ class App extends Component {
           <div className ='App'>
             <Route exact path ='/' component ={Loginpage} />
             <Route exact path ='/signup' component={Signuppage} />
+            <Route exact path ='/userlist' component={UserList} />
+
           </div>
         </Router>
       </Provider>

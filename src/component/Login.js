@@ -4,7 +4,9 @@ import '../style/Login.scss';
 import {Link } from 'react-router-dom';
 
 export default class Login extends Component {
-
+    componentDidUpdate(){
+        if(this.props.success.error===0)this.props.history.push("/userlist")
+    }
     render() {
         
         return (
