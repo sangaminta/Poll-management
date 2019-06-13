@@ -1,6 +1,6 @@
 import { takeLatest,put } from 'redux-saga/effects';
 import axios from 'axios'
-import {loginsubmitfailed, loginsubmitsuccess, signUpPasswordSuccess, receiveApiData } from './action/LoginAction'
+import {loginsubmitfailed, loginsubmitsuccess, signUpPasswordSuccess, receiveApiData, pollSubmitSuccess  } from './action/LoginAction'
 
 function* loginuser (action) {
     try{
@@ -44,10 +44,26 @@ function* requestApiData (action) {
     }
 }
 
+function* pollSubmit (action) {
+    try{
+        const response = yield axios.get(`https://secure-refuge-14993.herokuapp.com/add_poll?title=${action.payload.pollTitle}&options=${action.payload.option1}____${action.payload.option2}____${action.payload.option3}____${action.payload.option4}`)
+        .then((response) =>{
+            return response
+        })
+        if(response){
+            yield put(pollSubmitSuccess(response.data) )
+        }
+    }
+    catch(e){
+        yield
+    }
+}
+
 function* watchAction() {
     yield takeLatest ("LOG_SUBMIT" , loginuser);
     yield takeLatest ("SIGN_SUBMIT" , signUpUser);
     yield takeLatest ("REQUEST_API_DATA", requestApiData);
+    yield takeLatest ('SUBMIT_POLL', pollSubmit);
 }
  
 export default function* mySaga(){

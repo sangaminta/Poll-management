@@ -7,6 +7,7 @@ import {BrowserRouter as Router} from 'react-router-dom';
 import { Route } from 'react-router-dom';
 import Signuppage from './container/Signuppage';
 import Userlistpage from "./container/Userlistpage"
+import Addpollpage from './container/Addpollpage';
 
 const store=createStore()
 class App extends Component {
@@ -19,6 +20,7 @@ class App extends Component {
             <Route exact path ='/' component ={Loginpage} />
             <Route exact path ='/signup' component={Signuppage} />
             <Route exact path ='/userlist' component={Userlistpage} />
+            <Route exact path ='/addpoll' component = {Addpollpage} />
 
           </div>
         </Router>

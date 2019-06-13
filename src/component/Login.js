@@ -32,9 +32,11 @@ export default class Login extends Component {
                             <div className="ForgetPwd" value="Login">Don't have account?
                                 <Link to ={'/signup'}>
                                       <span className ='text-dark'>..SignUp</span>
-                               </Link>
-                            
+                                </Link>
                             </div>
+                            <Link to ={'/addpoll'}>
+                                      <span className ='text-dark'>Add poll</span>
+                            </Link>
                         </div>
                     </form>
                 </div>
