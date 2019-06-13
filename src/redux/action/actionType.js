@@ -1,0 +1,5 @@
+export  const FILL_USERNAME   = 'FILL_USERNAME';
+export  const FILL_PASSWORD   = 'FILL_PASSWORD'; 
+export  const LOG_SUBMIT  = 'LOG_SUBMIT';
+export  const LOG_SUBMIT_SUCCESS = 'LOG_SUBMIT_SUCCESS';
+export  const LOG_SUBMIT_FAILED = 'LOG_SUBMIT_FAILED';
