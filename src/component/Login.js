@@ -1,11 +1,14 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../style/Login.scss';
+import {Link } from 'react-router-dom';
 
 export default class Login extends Component {
-
+    componentDidUpdate(){
+        if(this.props.success.error===0)this.props.history.push("/userlist")
+    }
     render() {
-        console.log('1111111111111111111111',this.props.success)
+        
         return (
             <div className = 'main-page'>
                 <div className="col-md-6 login-form-2">
@@ -27,8 +30,13 @@ export default class Login extends Component {
                             }
                             </div>
                             <div className="ForgetPwd" value="Login">Don't have account?
-                            <p>SIGN UP</p>
+                                <Link to ={'/signup'}>
+                                      <span className ='text-dark'>..SignUp</span>
+                                </Link>
                             </div>
+                            <Link to ={'/addpoll'}>
+                                      <span className ='text-dark'>Add poll</span>
+                            </Link>
                         </div>
                     </form>
                 </div>
