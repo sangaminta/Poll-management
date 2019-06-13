@@ -39,6 +39,11 @@ export function signUpSubmit(payload) {
 export function signUpPasswordSuccess(payload) {
     return { type: actionType.SIGN_SUBMIT_SUCCESS, payload }
 }
+export function requestApiData () { 
+    return { type:actionType.REQUEST_API_DATA }
+} 
+export function receiveApiData (payload) {
+    return{type:actionType.RECEIVE_API_DATA , payload}  }
 
 
 

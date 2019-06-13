@@ -1,6 +1,6 @@
 import { takeLatest,put } from 'redux-saga/effects';
 import axios from 'axios'
-import {loginsubmitfailed, loginsubmitsuccess, signUpPasswordSuccess } from './action/LoginAction'
+import {loginsubmitfailed, loginsubmitsuccess, signUpPasswordSuccess, receiveApiData } from './action/LoginAction'
 
 function* loginuser (action) {
     try{
@@ -26,13 +26,29 @@ function* signUpUser (action) {
         }
     }
     catch(e){
+        yield 
+    }
+}
+
+function* requestApiData (action) {
+    console.log('api data...................',action.payload)
+    try{
+        const response = yield axios.get(`https://secure-refuge-14993.herokuapp.com/list_users`).then((response)=>{
+            return response
+        })
+        if(response){
+            yield put(receiveApiData(response.data))
+        }
+    }
+    catch(e){
         yield
     }
 }
 
 function* watchAction() {
     yield takeLatest ("LOG_SUBMIT" , loginuser);
-    yield takeLatest ("SIGN_SUBMIT" , signUpUser)
+    yield takeLatest ("SIGN_SUBMIT" , signUpUser);
+    yield takeLatest ("REQUEST_API_DATA", requestApiData);
 }
  
 export default function* mySaga(){

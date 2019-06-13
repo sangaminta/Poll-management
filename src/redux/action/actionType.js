@@ -8,3 +8,5 @@ export  const SIGN_PASSWORD = 'SIGN_PASSWORD' ;
 export  const SIGN_ROLE = 'SIGN_ROLE';
 export  const SIGN_SUBMIT = 'SIGN_SUBMIT';
 export  const SIGN_SUBMIT_SUCCESS = 'SIGN_SUBMIT_SUCCESS' ;
+export  const REQUEST_API_DATA = 'REQUEST_API_DATA';
+export  const RECEIVE_API_DATA = 'RECEIVE_API_DATA';
