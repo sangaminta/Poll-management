@@ -1,14 +1,9 @@
 import React, { Component } from 'react'
 
 export default class Userlist extends Component {
-    // componentDidUpdate(){ 
-    //     if(this.props.success.error===0)this.props.history.push("/") 
-    // }
+    
     render() {
-        console.log(this.props,'77777777777');
-        
         return (
-            
                 <table className="table">
                     <thead>
                         <tr>
@@ -25,11 +20,9 @@ export default class Userlist extends Component {
                             <td>{value.password}</td>
                             <td>{value.role}</td>
                         </tr>
-                    
                     )} 
                     </tbody>
                 </table>  
-            
         )
     }
 }

@@ -31,7 +31,6 @@ function* signUpUser (action) {
 }
 
 function* requestApiData (action) {
-    console.log('api data...................',action.payload)
     try{
         const response = yield axios.get(`https://secure-refuge-14993.herokuapp.com/list_users`).then((response)=>{
             return response

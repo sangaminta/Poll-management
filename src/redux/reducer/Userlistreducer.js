@@ -5,8 +5,6 @@ const initialState = {
 }
 
 export const Userlistreducer = (state = initialState , action)=> {
-    console.log(action.payload,'333333333333333');
-    
     switch (action.type)
     {
         case actionType.RECEIVE_API_DATA :

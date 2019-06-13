@@ -42,6 +42,7 @@ export function signUpPasswordSuccess(payload) {
 export function requestApiData () { 
     return { type:actionType.REQUEST_API_DATA }
 } 
+
 export function receiveApiData (payload) {
     return{type:actionType.RECEIVE_API_DATA , payload}  }
 
