@@ -64,6 +64,18 @@ export function pollsRequestApiData () {
 } 
 
 export function pollsReceiveApiData (payload) {
-    return{type:actionType.POLLS_RECEIVE_API_DATA , payload}  
+    return { type:actionType.POLLS_RECEIVE_API_DATA , payload}  
+}
+
+export function pollidrequest (payload) {
+    return { type:actionType.POLL_ID_REQUEST , payload }
+}
+
+export function pollidrecievedata (payload) {
+    return { type:actionType.POLL_ID_RECEIVE_API_DATA, payload }
+}
+
+export function pollSetId (payload) {
+    return { type:actionType.POLL_SET_ID ,payload }
 }
 

@@ -9,6 +9,7 @@ import Signuppage from './container/Signuppage';
 import Userlistpage from "./container/Userlistpage";
 import Addpollpage from './container/Addpollpage';
 import Pollslistpage from './container/Pollslistpage';
+import Viewdetailpolls from './container/Viewdetailpolls';
 
 const store=createStore()
 
@@ -24,6 +25,8 @@ class App extends Component {
             <Route exact path ='/userlist' component={Userlistpage} />
             <Route exact path ='/addpoll' component = {Addpollpage} />
             <Route exact path ='/pollslist' component = {Pollslistpage} />
+            <Route exact path ='/viewdetail/:id' component = {Viewdetailpolls} />
+            
           
 
           </div>
