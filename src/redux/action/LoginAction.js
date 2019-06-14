@@ -59,5 +59,11 @@ export function pollSubmitSuccess (payload) {
     return { type:actionType.SUBMIT_POLL_SUCCESS , payload}
 }
 
+export function pollsRequestApiData () { 
+    return { type:actionType.POLLS_REQUEST_API_DATA }
+} 
 
+export function pollsReceiveApiData (payload) {
+    return{type:actionType.POLLS_RECEIVE_API_DATA , payload}  
+}
 

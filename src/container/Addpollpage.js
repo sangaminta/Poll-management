@@ -24,6 +24,7 @@ class Addpollpage extends Component {
                 handlePoleTitle = {this.handlePoleTitle} 
                 handleSubmit = {this.handleSubmit}
                 {...this.props.pollData}
+                history={this.props.history}
                 />
             </div>
         )
