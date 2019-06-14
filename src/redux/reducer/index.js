@@ -4,13 +4,15 @@ import {Signupreducer} from './Signupreducer';
 import {Userlistreducer} from './Userlistreducer';
 import {Addpollreducer} from './Addpollreducer';
 import {Pollslistreducer} from './Pollslistreducer';
+import {Pollidreducer} from './Pollidreducer';
 const makeRootReducer =asyncReduces=>{
   const appReducer=combineReducers({
     Loginreducer ,
     Signupreducer ,
     Userlistreducer,
     Addpollreducer,
-    Pollslistreducer
+    Pollslistreducer,
+    Pollidreducer
   })
   return appReducer
 }
