@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 
 export default class Polladd extends Component {
-    // componentDidUpdate(){
-    //     if(this.props.success.error===0)
-    //     this.props.history.push("/pollslist")
-    // }
+     componentDidUpdate(){
+        console.log('@@@@@@@@@@@@@@@@@@@@@@@',this.props)
+
+         if(this.props.success.error===0)
+        this.props.history.push("/pollslist")
+     }
     render() {
     
         return (
