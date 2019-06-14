@@ -19,7 +19,7 @@ export default class Polllist extends Component {
 
                   {value.options.map((option,key)=>
                   <div key ={key} className ='option'>
-                     <input type="radio" /> { option.option } 
+                     <input type="radio" name="option" /> { option.option } 
                   </div>
                     )}
                  </div>

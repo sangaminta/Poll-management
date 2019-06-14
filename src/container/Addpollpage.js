@@ -15,7 +15,7 @@ class Addpollpage extends Component {
         const pollDetail = this.props.pollData
         this.props.actionForPollDetailSubmit(pollDetail);
 
-    }
+    } 
     render() {
 
         return (
