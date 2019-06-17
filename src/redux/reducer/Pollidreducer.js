@@ -1,11 +1,13 @@
 import * as actionType from "../action/actionType";
 
 const initialState = {
-  success: "",
+  success: {},
   id: "",
   option: "",
   vote: [],
-  voteSubmit: ""
+  voteSubmit: "",
+  isEdit:false,
+  changedTittle:""
 };
 
 export const Pollidreducer = (state = initialState, action) => {
@@ -24,8 +26,15 @@ export const Pollidreducer = (state = initialState, action) => {
 
     case actionType.SUBMIT_VOTE_SUCCESS:
       return Object.assign({}, state, { voteSubmit: action.payload });
+    
+    case actionType.EDIT_TITLE_VALUE:
+    return Object.assign({}, state ,{isEdit:action.payload})
+
+    case actionType.EDIT_TITLE_TEXT_VALUE:
+    return Object.assign({},state,{success:{...state.success, data:{...state.success.data, title:action.payload}}, changedTittle:action.payload })
 
     default:
       return state;
   }
 };
+

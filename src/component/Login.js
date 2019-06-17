@@ -10,7 +10,9 @@ export default class Login extends Component {
     render() {
         
         return (
-            <div className = 'main-page'>
+
+            <div>
+                <div className = 'main-page'>
                 <div className="col-md-6 login-form-2">
                     <h3 >Login for  </h3>
                     <form onSubmit = {(e) => this.props.handleSubmit(e)} >
@@ -41,6 +43,8 @@ export default class Login extends Component {
                     </form>
                 </div>
             </div>
+            </div>
+            
         )
     } 
 }

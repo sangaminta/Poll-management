@@ -1,7 +1,8 @@
 import * as actionType from "../action/actionType";
 
 const initialState = {
-  pollsDetail: []
+  pollsDetail: [],
+  
 };
 
 export const Pollslistreducer = (state = initialState, action) => {

@@ -84,9 +84,18 @@ export function selectOption(payload) {
 }
 
 export function userdovote(payload) {
-  return { type :actionType.SUBMIT_VOTE, payload}
+  return { type: actionType.SUBMIT_VOTE, payload}
 }
 
 export function uservotesuccess(payload) {
   return { type :actionType.SUBMIT_VOTE_SUCCESS, payload}
 }
+
+export function isedit(payload) {
+  return { type: actionType.EDIT_TITLE_VALUE,payload}
+}
+
+export function edit_text(payload) {
+  return { type: actionType.EDIT_TITLE_TEXT_VALUE, payload}
+}
+

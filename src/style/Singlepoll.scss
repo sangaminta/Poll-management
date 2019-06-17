@@ -17,11 +17,25 @@
   margin-left: 2em;
 }
 
-.btn-danger {
+.btn btn-danger {
   margin-left: 1em;
   font-size: 15px;
 }
-.btn-success {
+.btn btn-success {
   margin-left:30em; 
   font-size: 15px;
+}
+.option_value {
+  font-family: monospace;
+  margin: 1em;
+  margin-left: 2em;
+  clear: both;
+  padding-bottom: 1em;
+}
+
+.do-votebutton{
+  background-color: green;
+  border:1px solid green($color: #000000);
+  margin: 0 0 2em 20em; 
+  
 }

@@ -21,6 +21,7 @@ function* loginuser(action) {
         }&password=${action.payload.password}`
       )
       .then(response => {
+        localStorage.setItem("token", response.data.token);
         return response;
       });
     if (response) {
@@ -121,12 +122,18 @@ function* pollSetId(action) {
 }
 
 function* userdovote(action) {
+  const headers = {
+    access_token: localStorage.getItem("token")
+  };
+
   try {
     const response = yield axios
-      .get(
+      .post(
         `https://secure-refuge-14993.herokuapp.com/do_vote?id=${
           action.payload.id
-        }&option_text=${action.payload.name}`
+        }&option_text=${action.payload.name}`,
+        null,
+        { headers }
       )
       .then(response => {
         return response;
