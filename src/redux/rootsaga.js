@@ -8,7 +8,9 @@ import {
   pollSubmitSuccess,
   pollsReceiveApiData,
   pollidrecievedata,
-  uservotesuccess
+  uservotesuccess,
+  addtitlesuccess,
+  deleteoptionsuccess
 } from "./action/LoginAction";
 
 function* loginuser(action) {
@@ -146,6 +148,44 @@ function* userdovote(action) {
   }
 }
 
+function* addtitle(action) {
+  try {
+    const response = yield axios
+      .get(
+        `https://secure-refuge-14993.herokuapp.com/update_poll_title?id=${
+          action.payload.pollId
+        }&title=${action.payload.pollTitle}`
+      )
+      .then(response => {
+        return response;
+      });
+    if (response) {
+      yield put(addtitlesuccess(response.data));
+    }
+  } catch (e) {
+    yield;
+  }
+}
+
+function* deleteoption(action) {
+  try {
+    const response = yield axios
+      .get(
+        `https://secure-refuge-14993.herokuapp.com/delete_poll_option?id=${
+          action.payload.pollId
+        }&option_text=${action.payload.polloption}`
+      )
+      .then(response => {
+        return response;
+      });
+    if (response) {
+      yield put(deleteoptionsuccess(response.data));
+    }
+  } catch (e) {
+    yield;
+  }
+}
+
 function* watchAction() {
   yield takeLatest("LOG_SUBMIT", loginuser);
   yield takeLatest("SIGN_SUBMIT", signUpUser);
@@ -154,6 +194,8 @@ function* watchAction() {
   yield takeLatest("POLLS_REQUEST_API_DATA", pollsRequestApiData);
   yield takeLatest("POLL_SET_ID", pollSetId);
   yield takeLatest("SUBMIT_VOTE", userdovote);
+  yield takeLatest("ADD_UPDATE_TITLE", addtitle);
+  yield takeLatest("DELETE_POLL_OPTION", deleteoption);
 }
 
 export default function* mySaga() {

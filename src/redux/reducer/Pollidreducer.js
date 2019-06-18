@@ -6,8 +6,13 @@ const initialState = {
   option: "",
   vote: [],
   voteSubmit: "",
-  isEdit:false,
-  changedTittle:""
+  isEdit: false,
+  changedTittle: "",
+  updateted: "",
+  updateted_success: "",
+  delete_option: "",
+  delete_option_success: "",
+  isDeleteSuccess: false
 };
 
 export const Pollidreducer = (state = initialState, action) => {
@@ -26,15 +31,41 @@ export const Pollidreducer = (state = initialState, action) => {
 
     case actionType.SUBMIT_VOTE_SUCCESS:
       return Object.assign({}, state, { voteSubmit: action.payload });
-    
+
     case actionType.EDIT_TITLE_VALUE:
-    return Object.assign({}, state ,{isEdit:action.payload})
+      return Object.assign({}, state, { isEdit: action.payload });
 
     case actionType.EDIT_TITLE_TEXT_VALUE:
-    return Object.assign({},state,{success:{...state.success, data:{...state.success.data, title:action.payload}}, changedTittle:action.payload })
+      return Object.assign({}, state, {
+        success: {
+          ...state.success,
+          data: { ...state.success.data, title: action.payload }
+        },
+        changedTittle: action.payload
+      });
+
+    case actionType.ADD_UPDATE_TITLE:
+      return Object.assign({}, state, {
+        isEdit: false,
+        updateted: action.payload
+      });
+
+    case actionType.ADD_UPDATE_TITLE_SUCCESSS:
+      return Object.assign({}, state, { updateted_success: action.payload });
+
+    case actionType.DELETE_POLL_OPTION:
+      return Object.assign({}, state, { delete_option: action.payload });
+
+    case actionType.DELETE_POLL_OPTION_REQUEST:
+      return Object.assign({}, state, { isDeleteSuccess: false });
+
+    case actionType.DELETE_POLL_OPTION_SUCCESS:
+      return Object.assign({}, state, {
+        delete_option_success: action.payload,
+        isDeleteSuccess: true
+      });
 
     default:
       return state;
   }
 };
-

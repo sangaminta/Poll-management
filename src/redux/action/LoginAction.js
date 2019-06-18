@@ -99,3 +99,22 @@ export function edit_text(payload) {
   return { type: actionType.EDIT_TITLE_TEXT_VALUE, payload}
 }
 
+export function addtitle(payload) {
+  return { type:actionType.ADD_UPDATE_TITLE, payload}
+}
+
+export function addtitlesuccess(payload) {
+  return {type: actionType.ADD_UPDATE_TITLE_SUCCESSS, payload}
+}
+
+export function deleteoption(payload) {
+  return {type: actionType.DELETE_POLL_OPTION, payload}
+}
+
+export function deleteoptionRequest(payload) {
+  return { type: actionType.DELETE_POLL_OPTION_REQUEST, payload }
+}
+
+export function deleteoptionsuccess(payload) {
+  return { type: actionType.DELETE_POLL_OPTION_SUCCESS, payload }
+}
