@@ -12,7 +12,12 @@ const initialState = {
   updateted_success: "",
   delete_option: "",
   delete_option_success: "",
-  isDeleteSuccess: false
+  isDeleteSuccess: false,
+  isAddOption: false,
+  newOption: "",
+  submitNewOption:'',
+  isAddOptionSuccess:false,
+  addOptionSuccess:''
 };
 
 export const Pollidreducer = (state = initialState, action) => {
@@ -64,6 +69,21 @@ export const Pollidreducer = (state = initialState, action) => {
         delete_option_success: action.payload,
         isDeleteSuccess: true
       });
+
+    case actionType.ADD_NEW_OPTION:
+      return Object.assign({}, state, { isAddOption: action.payload });
+
+    case actionType.TAKE_NEW_OPTION:
+      return Object.assign({}, state, { newOption: action.payload });
+
+    case actionType.SUBMIT_NEW_OPTION:
+    return Object.assign({}, state, {isAddOption:false,submitNewOption:action.payload}); 
+
+    case actionType.SUBMIT_NEW_OPTION_REQUEST:
+    return Object.assign({}, state, {isAddOptionSuccess:false});
+
+    case actionType.SUBMIT_NEW_OPTION_SUCCESS:
+    return Object.assign({}, state, {isAddOptionSuccess:true,addOptionSuccess:action.payload});
 
     default:
       return state;

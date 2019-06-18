@@ -118,3 +118,23 @@ export function deleteoptionRequest(payload) {
 export function deleteoptionsuccess(payload) {
   return { type: actionType.DELETE_POLL_OPTION_SUCCESS, payload }
 }
+
+export function addOption(payload) {
+  return { type: actionType.ADD_NEW_OPTION, payload}
+}
+
+export function takeNewOptionValue(payload) {
+  return { type: actionType.TAKE_NEW_OPTION , payload}
+}
+
+export function submitNewOptionValue(payload) {
+  return { type: actionType.SUBMIT_NEW_OPTION , payload}
+}
+
+export function submitNewOptionValueRequest(payload) {
+  return { type: actionType.SUBMIT_NEW_OPTION_REQUEST , payload}
+}
+
+export function submitNewOptionValueSuccess(payload) {
+  return { type: actionType.SUBMIT_NEW_OPTION_SUCCESS , payload}
+}

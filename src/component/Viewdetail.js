@@ -8,7 +8,18 @@ export default class Viewdetail extends Component {
     return (
       <div>
         <h1>The Detail of id-:</h1>
-        <button className="btn btn-danger btn-sml   ">Delete Poll</button>
+        <button className="btn btn-danger btn-sml ">Delete Poll</button>
+        <button className="btn btn-success btn-sml ml-4" onClick ={this.props.addPollOption}>Add poll option</button>
+        <div className='box-size'>
+        {this.props && this.props.isAddOption ?  
+        <form onSubmit = {this.props.submitNewOption} > 
+          <input type = "text" onChange = {this.props.addNewOptionInPoll} />
+           </form> :''}
+        </div>
+        
+
+
+
         <div className="single_polllist">
           <div className="poll_title">
             {this.props && this.props.isEdit ? (

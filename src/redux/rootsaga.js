@@ -10,12 +10,12 @@ import {
   pollidrecievedata,
   uservotesuccess,
   addtitlesuccess,
-  deleteoptionsuccess
+  deleteoptionsuccess,
+  submitNewOptionValueSuccess
 } from "./action/LoginAction";
 
 function* loginuser(action) {
   try {
-    console.log("llllllllllllllllllllllllllllllll", action.payload);
     const response = yield axios
       .get(
         `https://secure-refuge-14993.herokuapp.com/login?username=${
@@ -186,6 +186,25 @@ function* deleteoption(action) {
   }
 }
 
+function* submitNewOptionValue(action) {
+  try {
+    const response = yield axios
+      .get(
+        `https://secure-refuge-14993.herokuapp.com/add_new_option?id=${
+          action.payload.id
+        }&option_text=${action.payload.value}`
+      )
+      .then(response => {
+        return response;
+      });
+    if (response) {
+      yield put(submitNewOptionValueSuccess(response.data));
+    }
+  } catch (e) {
+    yield;
+  }
+}
+
 function* watchAction() {
   yield takeLatest("LOG_SUBMIT", loginuser);
   yield takeLatest("SIGN_SUBMIT", signUpUser);
@@ -196,6 +215,7 @@ function* watchAction() {
   yield takeLatest("SUBMIT_VOTE", userdovote);
   yield takeLatest("ADD_UPDATE_TITLE", addtitle);
   yield takeLatest("DELETE_POLL_OPTION", deleteoption);
+  yield takeLatest("SUBMIT_NEW_OPTION", submitNewOptionValue);
 }
 
 export default function* mySaga() {

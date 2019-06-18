@@ -9,7 +9,11 @@ import {
   edit_text,
   addtitle,
   deleteoption,
-  deleteoptionRequest
+  deleteoptionRequest,
+  addOption,
+  takeNewOptionValue,
+  submitNewOptionValue,
+  submitNewOptionValueRequest
 } from "../redux/action/LoginAction";
 
 class Viewdetailpolls extends Component {
@@ -22,6 +26,13 @@ class Viewdetailpolls extends Component {
     const id = this.props.match.params.id;
     if (
       pollidData.isDeleteSuccess !== previousProps.pollidData.isDeleteSuccess
+    ) {
+      const option = this.props.option;
+      this.props.actionForSetId(id);
+    }
+
+    if (
+      pollidData.isAddOptionSuccess !== previousProps.pollidData.isAddOptionSuccess
     ) {
       const option = this.props.option;
       this.props.actionForSetId(id);
@@ -67,6 +78,26 @@ class Viewdetailpolls extends Component {
     this.props.actionForDeleteOption(delete_value);
   };
 
+  addPollOption = e => {
+    const isAddOption = !this.props.isAddOption;
+    this.props.actionForAddNewOption(isAddOption);
+  }
+
+  addNewOptionInPoll = e => {
+    const value = e.target.value;
+    this.props.actionForGiveNewPollOption(value);
+  }
+
+  submitNewOption = e => {
+    e.preventDefault();
+    const newOptionValue = {
+      value : this.props.newOption,
+      id: this.props.id
+    }
+   this.props.actionForSubmitNewOptionRequest();
+   this.props.actionForSubmitNewOption(newOptionValue);
+  }
+
   render() {
     return (
       <div>
@@ -79,6 +110,10 @@ class Viewdetailpolls extends Component {
           handleEditTitle={this.handleEditTitle}
           updateEditText={this.updateEditText}
           handleDeleteOption={this.handleDeleteOption}
+          addPollOption = {this.addPollOption}
+          isAddOption={this.props.isAddOption}
+          addNewOptionInPoll = {this.addNewOptionInPoll}
+          submitNewOption = {this.submitNewOption}
         />
       </div>
     );
@@ -94,7 +129,13 @@ const mapDispatchToProps = dispatch => {
     actionForTextValue: text => dispatch(edit_text(text)),
     actionForSubmitNewTitle: title => dispatch(addtitle(title)),
     actionForDeleteOption: value => dispatch(deleteoption(value)),
-    deleteoptionRequest: () => dispatch(deleteoptionRequest())
+    deleteoptionRequest: () => dispatch(deleteoptionRequest()),
+    actionForAddNewOption: isNew => dispatch(addOption(isNew)),
+    actionForGiveNewPollOption: newOption => dispatch(takeNewOptionValue(newOption)),
+    actionForSubmitNewOption:value=> dispatch(submitNewOptionValue(value)),
+    actionForSubmitNewOptionRequest:()=> dispatch(submitNewOptionValueRequest()),
+
+
   };
 };
 
@@ -106,7 +147,9 @@ const mapStateToProps = state => {
     isEdit: state.Pollidreducer.isEdit,
     changedTittle: state.Pollidreducer.changedTittle,
     delete_option_success: state.Pollidreducer.delete_option_success,
-    pollidData: state.Pollidreducer
+    pollidData: state.Pollidreducer,
+    isAddOption:state.Pollidreducer.isAddOption,
+    newOption:state.Pollidreducer.newOption
   };
 };
 
