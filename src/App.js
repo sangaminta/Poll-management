@@ -17,31 +17,25 @@ class App extends Component {
   render() {
     return (
       <div>
-        
-
-        <Provider store={store}>
-        <Router>
-          <div className="App">
-          <nav className="navbar navbar-dark bg-primary">
-              <Link to ={'/signup'} className='text-white'>Sign-Up</Link>
-              <Link to ={'/addpoll'} className='text-white'>Add Poll</Link>
-              <Link to ={'/login'} className='text-white'>Log in</Link>
-              
-              <Link to ={'/pollslist'} className='text-white'>Poll-List</Link>
-        </nav>
-            <Route exact path="/login" component={Loginpage} />
-            <Route exact path="/signup" component={Signuppage} />
-            <Route exact path="/userlist" component={Userlistpage} />
-            <Route exact path="/addpoll" component={Addpollpage} />
-            <Route exact path="/pollslist" component={Pollslistpage} />
-            <Route exact path="/viewdetail/:id" component={Viewdetailpolls} />
-          </div>
-        </Router>
-      </Provider>
+          <Provider store={store}>
+          <Router>
+            <div className="App">
+            <nav className="navbar navbar-dark bg-primary">
+                <Link to ={'/signup'} className='text-white'>Sign-Up</Link>
+                <Link to ={'/addpoll'} className='text-white'>Add Poll</Link>
+                <Link to ={'/login'} className='text-white'>Log in</Link>
+                <Link to ={'/pollslist'} className='text-white'>Poll-List</Link>
+          </nav>
+              <Route exact path="/login" component={Loginpage} />
+              <Route exact path="/signup" component={Signuppage} />
+              <Route exact path="/userlist" component={Userlistpage} />
+              <Route exact path="/addpoll" component={Addpollpage} />
+              <Route exact path="/pollslist" component={Pollslistpage} />
+              <Route exact path="/viewdetail/:id" component={Viewdetailpolls} />
+            </div>
+          </Router>
+        </Provider>
       </div>
-
-
-      
     );
   }
 }
