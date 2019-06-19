@@ -1,18 +1,44 @@
 .single_polllist {
-    border:1px solid green;
-    text-align : left;
-    margin:2em;
+  border: 1px solid green;
+  text-align: left;
+  margin: 2em;
 }
 
 .poll_title {
-    color: green;
-    font-family: 'Courier New';
-    font-size: 2em;
-    margin: 2em;
+  color: green;
+  font-family: "Courier New";
+  font-size: 2em;
+  margin: 2em;
 }
 
 .option_value {
-    font-family:  monospace ;
-    margin: 1em;
-    margin-left: 2em; 
+  font-family: monospace;
+  margin: 1em;
+  margin-left: 2em;
+}
+
+.btn btn-danger {
+  margin-left: 1em;
+  font-size: 15px;
+}
+.btn btn-success {
+  margin-left:30em; 
+  font-size: 15px;
+}
+.option_value {
+  font-family: monospace;
+  margin: 1em;
+  margin-left: 2em;
+  clear: both;
+  padding-bottom: 1em;
+}
+
+.do-votebutton{
+  background-color: green;
+  border:1px solid green($color: #000000);
+  margin: 0 0 2em 35em; 
+
+}
+.box-size {
+  margin-top:1em;
 }
