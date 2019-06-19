@@ -14,6 +14,7 @@ import Viewdetailpolls from "./container/Viewdetailpolls";
 const store = createStore();
 
 class App extends Component {
+  
   render() {
     return (
       <div>
