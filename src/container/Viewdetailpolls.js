@@ -13,7 +13,10 @@ import {
   addOption,
   takeNewOptionValue,
   submitNewOptionValue,
-  submitNewOptionValueRequest
+  submitNewOptionValueRequest,
+  deletePoll ,
+  deletePollRequest,
+  setErrorValue
 } from "../redux/action/LoginAction";
 
 class Viewdetailpolls extends Component {
@@ -37,6 +40,14 @@ class Viewdetailpolls extends Component {
       const option = this.props.option;
       this.props.actionForSetId(id);
     }
+
+    if(this.props.deleteIdSuccess.error === 0 ) {
+      this.props.history.push("/pollslist")
+    }
+
+  }
+  componentWillUnmount() {
+    this.props.actionForSetError()
   }
 
   handleChecked = option => {
@@ -98,9 +109,16 @@ class Viewdetailpolls extends Component {
    this.props.actionForSubmitNewOption(newOptionValue);
   }
 
+  deletePoll = e => {
+    
+    const id = this.props.id;
+    this.props.actionForDeletePollRequest();
+    this.props.actionForDeletePoll(id);
+  }
+
   render() {
     return (
-      <div>
+      
         <Viewdetail
           handleChecked={this.handleChecked}
           {...this.props.success}
@@ -114,8 +132,9 @@ class Viewdetailpolls extends Component {
           isAddOption={this.props.isAddOption}
           addNewOptionInPoll = {this.addNewOptionInPoll}
           submitNewOption = {this.submitNewOption}
+          deletePoll = {this.deletePoll}
         />
-      </div>
+      
     );
   }
 }
@@ -134,8 +153,9 @@ const mapDispatchToProps = dispatch => {
     actionForGiveNewPollOption: newOption => dispatch(takeNewOptionValue(newOption)),
     actionForSubmitNewOption:value=> dispatch(submitNewOptionValue(value)),
     actionForSubmitNewOptionRequest:()=> dispatch(submitNewOptionValueRequest()),
-
-
+    actionForDeletePoll: id => dispatch(deletePoll(id)),
+    actionForDeletePollRequest:()=>dispatch(deletePollRequest()),
+    actionForSetError: () => dispatch(setErrorValue())
   };
 };
 
@@ -149,7 +169,8 @@ const mapStateToProps = state => {
     delete_option_success: state.Pollidreducer.delete_option_success,
     pollidData: state.Pollidreducer,
     isAddOption:state.Pollidreducer.isAddOption,
-    newOption:state.Pollidreducer.newOption
+    newOption:state.Pollidreducer.newOption,
+    deleteIdSuccess : state.Pollidreducer.deleteIdSuccess
   };
 };
 

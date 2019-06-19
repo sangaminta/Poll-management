@@ -138,3 +138,19 @@ export function submitNewOptionValueRequest(payload) {
 export function submitNewOptionValueSuccess(payload) {
   return { type: actionType.SUBMIT_NEW_OPTION_SUCCESS , payload}
 }
+
+export function deletePoll (payload) {
+  return { type: actionType.DELETE_POLL , payload}
+}
+
+export function deletePollSuccess (payload) {
+  return { type: actionType.DELETE_POLL_SUCCESS, payload}
+}
+
+export function deletePollRequest (payload) {
+  return { type: actionType.DELETE_POLL_REQUEST, payload}
+}
+
+export function setErrorValue (payload) {
+  return { type : actionType.SET_ERROR , payload}
+}

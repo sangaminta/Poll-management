@@ -11,7 +11,8 @@ import {
   uservotesuccess,
   addtitlesuccess,
   deleteoptionsuccess,
-  submitNewOptionValueSuccess
+  submitNewOptionValueSuccess,
+  deletePollSuccess
 } from "./action/LoginAction";
 
 function* loginuser(action) {
@@ -205,6 +206,22 @@ function* submitNewOptionValue(action) {
   }
 }
 
+function* deletePoll(action) {
+  console.log('--------------------',action.payload)
+  try {
+    const response = yield axios.get(`https://secure-refuge-14993.herokuapp.com/delete_poll?id=${action.payload}`)
+    .then(response => {
+      return response;
+    });
+    if(response) {
+      yield put(deletePollSuccess(response.data));
+    } 
+  }catch (e) {
+      yield
+    }
+  }
+
+
 function* watchAction() {
   yield takeLatest("LOG_SUBMIT", loginuser);
   yield takeLatest("SIGN_SUBMIT", signUpUser);
@@ -216,6 +233,7 @@ function* watchAction() {
   yield takeLatest("ADD_UPDATE_TITLE", addtitle);
   yield takeLatest("DELETE_POLL_OPTION", deleteoption);
   yield takeLatest("SUBMIT_NEW_OPTION", submitNewOptionValue);
+  yield takeLatest('DELETE_POLL', deletePoll);
 }
 
 export default function* mySaga() {

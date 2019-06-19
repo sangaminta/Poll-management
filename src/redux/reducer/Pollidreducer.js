@@ -17,7 +17,10 @@ const initialState = {
   newOption: "",
   submitNewOption:'',
   isAddOptionSuccess:false,
-  addOptionSuccess:''
+  addOptionSuccess:'',
+  deleteId:'',
+  isDeleteId:false,
+  deleteIdSuccess:''
 };
 
 export const Pollidreducer = (state = initialState, action) => {
@@ -85,6 +88,17 @@ export const Pollidreducer = (state = initialState, action) => {
     case actionType.SUBMIT_NEW_OPTION_SUCCESS:
     return Object.assign({}, state, {isAddOptionSuccess:true,addOptionSuccess:action.payload});
 
+    case actionType.DELETE_POLL:
+    return Object.assign({}, state,{deleteId:action.payload})
+
+    case actionType.DELETE_POLL_REQUEST:
+    return Object.assign({}, state,{isDeleteId:false})
+
+    case actionType.DELETE_POLL_SUCCESS:
+    return Object.assign({}, state,{isDeleteId:true,deleteIdSuccess:action.payload})
+
+    case actionType.SET_ERROR:
+    return Object.assign({}, state , {deleteIdSuccess:''})
     default:
       return state;
   }
