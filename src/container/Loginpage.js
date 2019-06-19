@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+
 import Login from '../component/Login';
 import{ userlogin , passwordlogin , loginsubmit} from '../redux/action/LoginAction';
+
 import { connect } from 'react-redux';
 class Loginpage extends Component {
     constructor(props) {
@@ -8,6 +10,11 @@ class Loginpage extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.handlePassword = this.handlePassword.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
+    componentDidMount() {
+         const value =localStorage.getItem('token')
+         
+         if(value)this.props.history.push('/pollslist')
     }
 
     handleChange(e){
@@ -27,15 +34,21 @@ class Loginpage extends Component {
             username:this.props.userName,
             password:this.props.passWord
         }
-    
-        this.props.actionforsubmit(userdetail);
+        if(this.props.userName !=='' &&this.props.passWord!=='')
+        {
+            this.props.actionforsubmit(userdetail);
+        }
+        
     }
 
     render()
      {
-        
-        return (    
+        return (
+            
+                 
            <Login {...this.props}  handleChange={this.handleChange} handlePassword ={this.handlePassword} handleSubmit = {this.handleSubmit}/>
+            
+           
         )
     }
 }

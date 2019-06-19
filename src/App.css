@@ -27,6 +27,15 @@
   border:1px bold black;
 }
 
+.sign_up {
+  color:white;
+  margin-left: 72em;
+}
+.log_in {
+  color:white;
+  float:right;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

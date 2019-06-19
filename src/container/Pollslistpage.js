@@ -1,33 +1,44 @@
-import React, { Component } from 'react'
-import Polllist from '../component/Polllist';
-import{ pollsRequestApiData } from '../redux/action/LoginAction';
-import { connect } from 'react-redux';
+import React, { Component } from "react";
+import Polllist from "../component/Polllist";
+import { pollsRequestApiData, signOut } from "../redux/action/LoginAction";
+import { connect } from "react-redux";
 
 class Pollslistpage extends Component {
-    componentDidMount(){
-        this.props.actionForShowPollsList();
-    }
+  componentDidMount() {
+    this.props.actionForShowPollsList();
+  }
 
-    render() {
-        return (
-            <div>
-                <Polllist pollsDetail={this.props.pollsDetail} />
-            </div>
-        )
-    }
+  handleSignOut = e => {
+    localStorage.clear();
+    this.props.actionForSignOut();
+  };
+
+  render() {
+    return (
+      <div>
+        <Polllist
+          pollsDetail={this.props.pollsDetail}
+          handleSignOut={this.handleSignOut}
+        />
+      </div>
+    );
+  }
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        actionForShowPollsList:(data) => dispatch(pollsRequestApiData(data))
-    }
-}
+const mapDispatchToProps = dispatch => {
+  return {
+    actionForShowPollsList: data => dispatch(pollsRequestApiData(data)),
+    actionForSignOut: () => dispatch(signOut())
+  };
+};
 
-const  mapStateToProps = (state) => {
-    return {
-        pollsDetail:state.Pollslistreducer.pollsDetail
-    }
-}
+const mapStateToProps = state => {
+  return {
+    pollsDetail: state.Pollslistreducer.pollsDetail
+  };
+};
 
-export default connect (mapStateToProps, mapDispatchToProps)(Pollslistpage);
-
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Pollslistpage);

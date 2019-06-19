@@ -37,5 +37,5 @@ export const DELETE_POLL = 'DELETE_POLL';
 export const DELETE_POLL_SUCCESS = 'DELETE_POLL_SUCCESS';
 export const DELETE_POLL_REQUEST = 'DELETE_POLL_REQUEST';
 export const SET_ERROR = 'SET_ERROR';
-
+export const SIGN_OUT = 'SIGN_OUT';
 

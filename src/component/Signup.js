@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.css';
 import '../style/Login.scss';
+import {Link} from 'react-router-dom';
 
 export default class Signup extends Component {
     componentDidUpdate(){ 
@@ -8,6 +9,16 @@ export default class Signup extends Component {
     }
     render() {
         return (
+            <div>
+                <nav className="navbar navbar-dark bg-primary">
+                    
+                    {/* <Link to ={'/addpoll'} className='text-white'>Add Poll</Link> */}
+                    <Link to ={'/login'} className='log_in_style'>Log in</Link>
+                    {/* <Link to ={'/pollslist'} className='text-white'>Poll-List</Link> */}
+                </nav>    
+
+
+
                 <div className = 'main-page'>
                     <div className="col-md-6 login-form-2">
                         <h3 >SignUp for  </h3>
@@ -39,6 +50,8 @@ export default class Signup extends Component {
                         </form>
                     </div>
                 </div>
+            </div>
+                
         )
     }
 }

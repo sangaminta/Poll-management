@@ -154,3 +154,7 @@ export function deletePollRequest (payload) {
 export function setErrorValue (payload) {
   return { type : actionType.SET_ERROR , payload}
 }
+
+export function signOut (payload) {
+  return { type :actionType.SIGN_OUT , payload}
+}
