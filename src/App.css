@@ -36,6 +36,11 @@
   float:right;
 }
 
+.pollList {
+  margin-left:75em;
+  color: white;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

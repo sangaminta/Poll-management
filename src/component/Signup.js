@@ -4,20 +4,17 @@ import '../style/Login.scss';
 import {Link} from 'react-router-dom';
 
 export default class Signup extends Component {
-    componentDidUpdate(){ 
-        if(this.props.success.error===0)this.props.history.push("/") 
-    }
+   
+    // componentDidUpdate() {
+
+    //     if(this.props.success.error === 0)this.props.history.push("/login") 
+    // }
     render() {
         return (
             <div>
                 <nav className="navbar navbar-dark bg-primary">
-                    
-                    {/* <Link to ={'/addpoll'} className='text-white'>Add Poll</Link> */}
                     <Link to ={'/login'} className='log_in_style'>Log in</Link>
-                    {/* <Link to ={'/pollslist'} className='text-white'>Poll-List</Link> */}
                 </nav>    
-
-
 
                 <div className = 'main-page'>
                     <div className="col-md-6 login-form-2">
@@ -40,13 +37,13 @@ export default class Signup extends Component {
                             <div className="form-group ">
                                 <input type="submit" className="btnSubmit btn-success " value="Signup" />
                             </div>
-                            <div className="form-group">
+                            {/* <div className="form-group">
                                 <div className ='border border-danger bg-white'>
                                     { 
                                         this.props.success === '' ? '': (this.props.success.error === 1 ? this.props.success.message : 'Sign-up Successfully' )
                                     }
                                 </div>
-                            </div>    
+                            </div>     */}
                         </form>
                     </div>
                 </div>

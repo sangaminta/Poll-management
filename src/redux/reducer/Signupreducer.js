@@ -27,6 +27,9 @@ export const Signupreducer = (state = initialState , action)=> {
         case actionType.SIGN_SUBMIT_SUCCESS :
         return Object.assign({},state,{success:action.payload})
 
+        case actionType.SET_SIGNUP_ERROR :
+        return Object.assign({}, state ,{success:''})
+
         default:
         return state;
 

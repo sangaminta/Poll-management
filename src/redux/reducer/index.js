@@ -5,7 +5,7 @@ import { Userlistreducer } from "./Userlistreducer";
 import { Addpollreducer } from "./Addpollreducer";
 import { Pollslistreducer } from "./Pollslistreducer";
 import { Pollidreducer } from "./Pollidreducer";
-import { SIGN_OUT } from "../action/actionType";
+
 
 const makeRootReducer = asyncReduces => {
   const appReducer = combineReducers({

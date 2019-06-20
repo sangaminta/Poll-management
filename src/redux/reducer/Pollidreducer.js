@@ -20,7 +20,11 @@ const initialState = {
   addOptionSuccess:'',
   deleteId:'',
   isDeleteId:false,
-  deleteIdSuccess:''
+  deleteIdSuccess:'',
+  optionNew:'',
+  placeValue:'',
+  optionNewSuccess:'',
+  isNewOption:false,
 };
 
 export const Pollidreducer = (state = initialState, action) => {
@@ -98,7 +102,23 @@ export const Pollidreducer = (state = initialState, action) => {
     return Object.assign({}, state,{isDeleteId:true,deleteIdSuccess:action.payload})
 
     case actionType.SET_ERROR:
-    return Object.assign({}, state , {deleteIdSuccess:''})
+    return Object.assign({}, state,{deleteIdSuccess:''})
+
+    case actionType.NEW_OPTION:
+    return Object.assign({}, state , {placeValue:action.payload})
+
+    case actionType.RESET_NEW_OPTION:
+    return Object.assign( {}, state, {placeValue:''})
+
+    case actionType.ADD_OPTION_IN_POLL:
+    return Object.assign({}, state , {optionNew:action.payload,placeValue:''})
+
+    case actionType.ADD_OPTION_IN_POLL_REQUEST:
+    return Object.assign({}, state, {isNewOption:false} )
+
+    case actionType.ADD_OPTION_IN_POLL_SUCCESS:
+    return Object.assign({}, state , {isNewOption:true,optionNewSuccess:action.payload})
+
     default:
       return state;
   }

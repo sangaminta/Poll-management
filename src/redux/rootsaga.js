@@ -12,11 +12,13 @@ import {
   addtitlesuccess,
   deleteoptionsuccess,
   submitNewOptionValueSuccess,
-  deletePollSuccess
+  deletePollSuccess,
+  pollsRequestApiData as asd,
+  pollDeleteSuccess,
+  optionAddInPollSuccess
 } from "./action/LoginAction";
 
 function* loginuser(action) {
-  
   try {
     const response = yield axios
       .get(
@@ -25,7 +27,9 @@ function* loginuser(action) {
         }&password=${action.payload.password}`
       )
       .then(response => {
-        localStorage.setItem("token", response.data.token);
+        if (response.data.token) {
+          localStorage.setItem("token", response.data.token);
+        }
         return response;
       });
     if (response) {
@@ -208,20 +212,64 @@ function* submitNewOptionValue(action) {
 }
 
 function* deletePoll(action) {
-  console.log('--------------------',action.payload)
+  console.log("--------------------", action.payload);
   try {
-    const response = yield axios.get(`https://secure-refuge-14993.herokuapp.com/delete_poll?id=${action.payload}`)
-    .then(response => {
-      return response;
-    });
-    if(response) {
+    const response = yield axios
+      .get(
+        `https://secure-refuge-14993.herokuapp.com/delete_poll?id=${
+          action.payload
+        }`
+      )
+      .then(response => {
+        return response;
+      });
+    if (response) {
       yield put(deletePollSuccess(response.data));
-    } 
-  }catch (e) {
-      yield
     }
+  } catch (e) {
+    yield;
   }
+}
 
+function* pollDelete(action) {
+  try {
+    const response = yield axios
+      .get(
+        `https://secure-refuge-14993.herokuapp.com/delete_poll?id=${
+          action.payload
+        }`
+      )
+      .then(response => {
+        return response;
+      });
+    if (response) {
+      yield put(asd());
+      yield put(pollDeleteSuccess(response.data));
+    }
+  } catch (e) {
+    yield;
+  }
+}
+
+function* optionAddInPoll (action) {
+  try {
+    const response = yield axios
+      .get(
+        `https://secure-refuge-14993.herokuapp.com/add_new_option?id=${
+          action.payload.id
+        }&option_text=${action.payload.option}`
+      )
+      .then(response => {
+        return response;
+      });
+      if(response) {
+        
+        yield put(optionAddInPollSuccess(response.data))
+      }
+      }catch (e) {
+        yield;
+      }
+}
 
 function* watchAction() {
   yield takeLatest("LOG_SUBMIT", loginuser);
@@ -234,7 +282,9 @@ function* watchAction() {
   yield takeLatest("ADD_UPDATE_TITLE", addtitle);
   yield takeLatest("DELETE_POLL_OPTION", deleteoption);
   yield takeLatest("SUBMIT_NEW_OPTION", submitNewOptionValue);
-  yield takeLatest('DELETE_POLL', deletePoll);
+  yield takeLatest("DELETE_POLL", deletePoll);
+  yield takeLatest("POLL_DELETE", pollDelete);
+  yield takeLatest('ADD_OPTION_IN_POLL',optionAddInPoll )
 }
 
 export default function* mySaga() {

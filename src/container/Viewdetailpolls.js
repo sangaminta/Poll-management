@@ -16,34 +16,45 @@ import {
   submitNewOptionValueRequest,
   deletePoll ,
   deletePollRequest,
-  setErrorValue
+  setErrorValue,
+  newOptionForPoll,
+  resetNewOption,
+  optionAddInPoll,
+  optionAddInPollRequest
+  
 } from "../redux/action/LoginAction";
 
 class Viewdetailpolls extends Component {
   componentDidMount() {
     const id = this.props.match.params.id;
     this.props.actionForSetId(id);
-  }
+  } 
   componentDidUpdate(previousProps) {
     const { pollidData } = this.props;
     const id = this.props.match.params.id;
     if (
       pollidData.isDeleteSuccess !== previousProps.pollidData.isDeleteSuccess
     ) {
-      const option = this.props.option;
       this.props.actionForSetId(id);
     }
 
     if (
       pollidData.isAddOptionSuccess !== previousProps.pollidData.isAddOptionSuccess
     ) {
-      const option = this.props.option;
+     
       this.props.actionForSetId(id);
     }
+
+    if(pollidData.isNewOption !==previousProps.pollidData.isNewOption)
+    {
+      this.props.actionForSetId(id);
+    }
+    
 
     if(this.props.deleteIdSuccess.error === 0 ) {
       this.props.history.push("/pollslist")
     }
+
 
   }
   componentWillUnmount() {
@@ -116,7 +127,31 @@ class Viewdetailpolls extends Component {
     this.props.actionForDeletePoll(id);
   }
 
+  handleChange = e => {
+    const value = e.target.value;
+    this.props.actionForValueOfNewOption(value);
+  }
+
+  handleResetOption = e => {
+    this.props.actionForResetOption();
+  }
+
+  newOptionAdd = e => {
+   const value = {
+     id : this.props.id,
+     option:this.props.placeValue
+   }
+   
+    if(value)
+    {
+      this.props.actionForPollAddNewOptionRequest()
+      this.props.actionForPollAddNewOption(value)
+    }
+  }
+
+
   render() {
+    
     return (
       
         <Viewdetail
@@ -133,6 +168,10 @@ class Viewdetailpolls extends Component {
           addNewOptionInPoll = {this.addNewOptionInPoll}
           submitNewOption = {this.submitNewOption}
           deletePoll = {this.deletePoll}
+          placeValue = {this.props.placeValue}
+          handleChange = {this.handleChange}
+          handleResetOption = {this.handleResetOption}
+          newOptionAdd = {this.newOptionAdd}
         />
       
     );
@@ -155,7 +194,13 @@ const mapDispatchToProps = dispatch => {
     actionForSubmitNewOptionRequest:()=> dispatch(submitNewOptionValueRequest()),
     actionForDeletePoll: id => dispatch(deletePoll(id)),
     actionForDeletePollRequest:()=>dispatch(deletePollRequest()),
-    actionForSetError: () => dispatch(setErrorValue())
+    actionForSetError: () => dispatch(setErrorValue()),
+    actionForValueOfNewOption: value => dispatch (newOptionForPoll(value)),
+    actionForResetOption : ()=> dispatch (resetNewOption()),
+    actionForPollAddNewOption: value => dispatch(optionAddInPoll(value)),
+    actionForPollAddNewOptionRequest:()=>dispatch(optionAddInPollRequest())
+
+
   };
 };
 
@@ -170,7 +215,8 @@ const mapStateToProps = state => {
     pollidData: state.Pollidreducer,
     isAddOption:state.Pollidreducer.isAddOption,
     newOption:state.Pollidreducer.newOption,
-    deleteIdSuccess : state.Pollidreducer.deleteIdSuccess
+    deleteIdSuccess : state.Pollidreducer.deleteIdSuccess,
+    placeValue: state.Pollidreducer.placeValue
   };
 };
 

@@ -1,4 +1,7 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import {Link} from 'react-router-dom';
+import '../App.css'
+
 
 export default class Polladd extends Component {
      componentDidUpdate(){
@@ -9,6 +12,11 @@ export default class Polladd extends Component {
     
         return (
             <div>
+                <nav className="navbar navbar-dark bg-primary">
+                    <Link to={"/pollslist"} className="pollList ">
+                        Poll list
+                    </Link>
+                </nav>
                 <div className = 'main-page'>
                     <div className="col-md-6 login-form-2">
                         <h3 > Adding Poll-  </h3>

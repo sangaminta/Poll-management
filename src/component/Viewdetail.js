@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "../style/Singlepoll.scss";
+import {Link} from 'react-router-dom'
 
 export default class Viewdetail extends Component {
   render() {
@@ -7,16 +8,29 @@ export default class Viewdetail extends Component {
 
     return (
       <div>
+        <nav className="navbar navbar-dark bg-primary">
+          <Link to={"/pollslist"} className='poll-list'>
+            Poll-List
+          </Link>
+          </nav>
         <h1>The Detail of id-:</h1>
-        <button className="btn btn-danger btn-sml " onClick = { this.props.deletePoll } >Delete Poll</button>
+        <button
+          className="btn btn-danger btn-sml "
+          onClick={this.props.deletePoll}
+        >
+          Delete Poll
+        </button>
         <button className="btn btn-success btn-sml ml-4" onClick ={this.props.addPollOption}>Add poll option</button>
-        <div className='box-size'>
-        {this.props && this.props.isAddOption ?  
-        <form onSubmit = {this.props.submitNewOption} > 
-          <input type = "text" onChange = {this.props.addNewOptionInPoll} />
-           </form> :''}
+        <div className="box-size">
+          {this.props && this.props.isAddOption ? (
+            <form onSubmit={this.props.submitNewOption}>
+              <input type="text" onChange={this.props.addNewOptionInPoll} />
+            </form>
+          ) : (
+            ""
+          )}
         </div>
-        
+
         <div className="single_polllist">
           <div className="poll_title">
             {this.props && this.props.isEdit ? (
@@ -40,10 +54,9 @@ export default class Viewdetail extends Component {
             </button>
           </div>
           {this.props.data &&
-            this.props.data.options && this.props.data.options.map((option, key) => (
-
+            this.props.data.options &&
+            this.props.data.options.map((option, key) => (
               <div key={key} className="option_value ">
-              {console.log('@@@@@@@@@@@@@@@',option)}
                 <input
                   type="radio"
                   name="option"
@@ -59,7 +72,16 @@ export default class Viewdetail extends Component {
                 </button>
               </div>
             ))}
-
+          <input
+            type="text"
+            className="inputtype"
+            placeholder="poll- option"
+            value={this.props.placeValue}
+            onChange={this.props.handleChange}
+          />
+          <button className="add " onClick = {this.props.newOptionAdd}> add </button>
+          <button className="clear" onClick = {this.props.handleResetOption}> clear</button>
+          <br />
           <button
             className="do-votebutton"
             onClick={e => this.props.handleClick(e)}

@@ -14,19 +14,23 @@ export default class Polllist extends Component {
           >
             Log out
           </Link>
+          <Link to={"/addpoll"} className="text-white">
+            Add Poll
+          </Link>
         </nav>
-
         <div className="main head">
           <h3>Polls - List</h3>
           {this.props.pollsDetail.map((value, key) => (
             <div key={key}>
+
               <div className="poll_option_list">
                 <div>
                   <span className="value_title"> {value.title} </span>
                   <span className="detail">
-                    <Link to={`/viewdetail/${value._id}`}> View-Detail </Link>{" "}
+                    <Link to={`/viewdetail/${value._id}`}> View-Detail </Link>
+                    <button className = 'btn btn-danger btn-sml' onClick = {()=>{this.props.pollDelete(value._id)} }> Delete </ button>
                   </span>
-                </div>{" "}
+                </div>
                 <br />
                 <br />
                 {value.options.map((option, key) => (

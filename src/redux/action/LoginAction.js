@@ -158,3 +158,39 @@ export function setErrorValue (payload) {
 export function signOut (payload) {
   return { type :actionType.SIGN_OUT , payload}
 }
+
+export function setError(payload) {
+  return { type : actionType.SET_SIGNUP_ERROR , payload}
+}
+
+export function pollDelete(payload) {
+  return { type : actionType.POLL_DELETE , payload}
+}
+
+export function pollDeleteSuccess(payload) {
+  return { type : actionType.POLL_DELETE_SUCCESS , payload}
+}
+
+export function pollDeleteRequest(payload) {
+  return { type : actionType.POLL_DELETE_REQUEST , payload}
+}
+
+export function newOptionForPoll(payload) {
+  return  { type:actionType.NEW_OPTION, payload}
+}
+
+export function resetNewOption (payload) {
+  return { type:actionType.RESET_NEW_OPTION, payload}
+}
+
+export function optionAddInPoll (payload) {
+  return { type: actionType.ADD_OPTION_IN_POLL, payload}
+}
+
+export function optionAddInPollSuccess (payload) {
+  return { type: actionType.ADD_OPTION_IN_POLL_SUCCESS, payload}
+}
+
+export function optionAddInPollRequest (payload) {
+  return { type: actionType.ADD_OPTION_IN_POLL_REQUEST, payload}
+}

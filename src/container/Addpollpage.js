@@ -13,7 +13,11 @@ class Addpollpage extends Component {
     handleSubmit = (e)=> {
         e.preventDefault();
         const pollDetail = this.props.pollData
-        this.props.actionForPollDetailSubmit(pollDetail);
+        if(pollDetail !== '')
+        {
+            this.props.actionForPollDetailSubmit(pollDetail);
+        }
+        
 
     } 
     render() {

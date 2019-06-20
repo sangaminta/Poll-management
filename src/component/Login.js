@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default class Login extends Component {
   componentDidUpdate() {
-    if (localStorage.getItem("token")) this.props.history.push("/pollslist");
+     if (localStorage.getItem("token")) this.props.history.push("/pollslist");
   }
   render() {
     return (
@@ -19,7 +19,7 @@ export default class Login extends Component {
             Log in
           </Link>
         </nav>
-
+ 
         <div className="main-page">
           <div className="col-md-6 login-form-2">
             <h3>Login for </h3>
@@ -50,13 +50,13 @@ export default class Login extends Component {
                 />
               </div>
               <div className="form-group">
-                <div className="border border-danger bg-white">
+                {/* <div className="border border-danger bg-white">
                   {this.props.success === ""
                     ? ""
                     : this.props.success.error === 1
                     ? this.props.success.data
                     : ""}
-                </div>
+                </div> */}
               </div>
             </form>
           </div>
